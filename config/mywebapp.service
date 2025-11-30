@@ -1,0 +1,24 @@
+**Path in repo:** `configs/mywebapp.service`  
+**Real path on server:** `/etc/systemd/system/mywebapp.service`
+
+```ini
+[Unit]
+Description=My simple Python web app
+After=network.target
+
+[Service]
+# Run the app as this user (change if your username is different)
+User=praveena
+
+# Directory where your web files live
+WorkingDirectory=/home/praveena/mywebapp
+
+# Full path to Python and command to start the HTTP server on port 8080
+ExecStart=/usr/bin/python3 -m http.server 8080
+
+# Restart policy if the process crashes
+Restart=always
+RestartSec=3
+
+[Install]
+WantedBy=multi-user.target
